@@ -1,6 +1,6 @@
 function [L,R,E,ro,Note,H,el,Nw,Aff]=ParamInit
 %% INITIALISATION =========================================================
-Aff = 0;        % Affichage si Aff > 0, si non Aff = 0
+Aff = 1;        % Affichage si Aff > 0, si non Aff = 0
 % Geometrie : section cicrculaire
 L=1;            % Longueur [m]
 R=0.001;        % Rayon [m]
