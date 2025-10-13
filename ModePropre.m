@@ -9,9 +9,9 @@ switch Aff
     case 0   % => Aucun affichage
     case 1   % => visualisation de quelques modes propres
         figure(1);
-        plot(s,Y([1:3 nmax],:),'LineWidth',2)
+        plot(s,Y([1:3 Nw],:),'LineWidth',2)
         xlabel('s [m]')
-        legend('n=1','n=2','n=3','n=nmax')
+        legend('n=1','n=2','n=3','n=Nw')
         set(gca,'FontSize',24)
 end
 
