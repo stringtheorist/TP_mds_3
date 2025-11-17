@@ -2,10 +2,10 @@
 %% INITIALISATION =========================================================
 clear;close all;clc;
 %% ========================================================================
-% Chargement des parametres
-[L,R,E,ro,Note,H,el,Nw,Aff]=ParamInit;
-% Parametres intermediaires
-[A,C,N0,Def]=ParamInter(R,L,ro,E,Note);
+Type=0;
+% Parametres
+[L,C,H,el,Nw,Aff]=Param(Type);
+
 % Domaine modal
 [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C);
 % Domaine spatial
