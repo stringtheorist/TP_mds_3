@@ -1,4 +1,4 @@
-function u=FctDeplacement(Y,T)
+function u=FctDeplacement(Y,T,s)
 
 u=Y'*T;    % u_ij, avec i=>s et j=>t
 %-> visualisation de u(s,t) a divers instants
