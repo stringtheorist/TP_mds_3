@@ -25,7 +25,7 @@ Y=ModePropre(kn,s,Nw,Aff);
 % Fonction en temps
 T=FctTemporelle(Nw,wn,an,bn,t,Aff);
 % Deplacement
-u=FctDeplacement(Y,T,s);
+u=FctDeplacement(H,L,Y,T,s,t);
 
 %% ========================================================================
 %% VALORISATION ==========================================================

@@ -1,4 +1,4 @@
-function u=FctDeplacement(Y,T,s)
+function u=FctDeplacement(H,L,Y,T,s,t)
 
 u=Y'*T;    % u_ij, avec i=>s et j=>t
 %-> visualisation de u(s,t) a divers instants
@@ -16,7 +16,7 @@ legend(['s=' num2str(s(1)) ],['s=' num2str(s(10)) ],['s=' num2str(s(20)) ])
 set(gca,'FontSize',24)
 %-> visualisation de u(s,t) au cours du temps
 figure(5);
-for j=1:Nt
+for j=1:length(t)
     plot(s,u(:,j),'k','LineWidth',2);hold on
     plot(s([1 10 20]),u([1 10 20],j),'o','MarkerSize',8,'LineWidth',2)
     hold off
