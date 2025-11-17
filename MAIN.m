@@ -19,11 +19,11 @@ disp(['[Nt,Ns,Nw]=[' num2str([Nt,Ns,Nw]) ']'])
 %% ========================================================================
 %% ANALYSE MODALE =========================================================
 % Modes propres
-Y=ModePropre(kn,s,Nw,Aff);
+Y=ModePropre(kn,s,Nw,Aff(1));
 % Amplitude modale
-[an,bn]=AmplitudeModale(L,el,kn,wn,n,H,Aff);
+[an,bn]=AmplitudeModale(L,el,kn,wn,n,H,Aff(2));
 % Fonction en temps
-T=FctTemporelle(Nw,wn,an,bn,t,Aff);
+T=FctTemporelle(Nw,wn,an,bn,t,Aff(3));
 % Deplacement
 u=FctDeplacement(H,L,Y,T,s,t);
 

@@ -8,9 +8,11 @@ bn=zeros(size(n));
 
 if (Aff>0)
     figure(2);
+    
     stem(wn,abs(an),'LineWidth',2)
     xlabel('wn [rad/s]')
     ylabel('|an| [m]')
+    title('Amplitude Modale')
     set(gca,'FontSize',24)
 
 else
