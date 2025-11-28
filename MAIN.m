@@ -7,13 +7,11 @@ Type=0;
 [L,C,H,el,Nw,Aff]=Param(Type);
 % Domaine modal
 [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C);
-% Domaine spatial
-[ds,s,Ns]=DomaineSpatial(Lamb,L);
-% Domaine temporel
-[dt,t,Nt,tmax]=DomaineTemporel(Per,L);
+% Domaine spatial et temporel
+[s,t]=DomaineSpTp(Per,Lamb,L);
 % Rq : dans une phase de bebeugage, il faut que [Nt,Ns,Nw] aient des valeurs 
 % raisonnables (<=1000) et si possible distinctes.
-disp(['[Nt,Ns,Nw]=[' num2str([Nt,Ns,Nw]) ']'])
+disp(['[Nt,Ns,Nw]=[' num2str([length(t),length(s),Nw]) ']'])
 
 %% ========================================================================
 %% ANALYSE MODALE =========================================================
