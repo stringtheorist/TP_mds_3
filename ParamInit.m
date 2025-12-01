@@ -17,6 +17,7 @@ switch ConditionsLimite
         H=L/5;          % Hauteur [m]
         el=L/4;         % poistion [m]
         % Domaine modal
+
         Nw=10;        % Nombre maximal de mode considere
 
     case 1 % Conditions limites : ressorts
