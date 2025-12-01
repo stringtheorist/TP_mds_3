@@ -1,5 +1,5 @@
 function [Y,normY2]=ModePropre(kn,s,Nw,Aff,ConditionsLimite)
-
+normY2=0;
 switch ConditionsLimite
     case 0
         for in=1:Nw
