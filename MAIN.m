@@ -41,4 +41,5 @@ Film(u,s,L,H,'corde.avi');
 % D'autres valorisations peuvent etre envisagees, quelques propostion
 % Film ?
 % Son ?
+Son(u, t);
 % Autre ?
