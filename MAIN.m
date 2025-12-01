@@ -28,6 +28,7 @@ disp(['[Nt,Ns,Nw]=[' num2str([length(t),length(s),Nw]) ']'])
 T=FctTemporelle(Nw,wn,an,bn,t,Aff(3));
 % Deplacement
 u=FctDeplacement(H,L,Y,T,s,t,Aff(4));
+Film(u,s,L,H,'corde.avi');
 
 %% ========================================================================
 %% VALORISATION ===========================================================
