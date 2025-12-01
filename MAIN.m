@@ -32,4 +32,5 @@ u=FctDeplacement(H,L,Y,T,s,t,Aff(4));
 % D'autres valorisations peuvent etre envisagees, quelques propostion
 % Film ?
 % Son ?
+Son(u, t);
 % Autre ?
