@@ -3,8 +3,10 @@
 clear;close all;clc;
 %% ========================================================================
 Type=0;
+% ConditionsInitiales = 1 : corde pincée ; 2 : corde frapée
+ConditionsInitiales = 2; 
 % Parametres
-[L,C,H,el,Nw,Aff]=Param(Type);
+[L,C,V,H,el,Nw,Aff]=Param(Type);
 % Domaine modal
 [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C);
 % Domaine spatial et temporel
@@ -18,14 +20,14 @@ disp(['[Nt,Ns,Nw]=[' num2str([length(t),length(s),Nw]) ']'])
 % Modes propres
 Y=ModePropre(kn,s,Nw,Aff(1));
 % Amplitude modale
-[an,bn]=AmplitudeModale(L,el,kn,wn,n,H,Aff(2));
+[an,bn]=AmplitudeModale(L,el,kn,wn,n,H,V,Aff(2),ConditionsInitiales);
 % Fonction en temps
 T=FctTemporelle(Nw,wn,an,bn,t,Aff(3));
 % Deplacement
 u=FctDeplacement(H,L,Y,T,s,t,Aff(4));
 
 %% ========================================================================
-%% VALORISATION ==========================================================
+%% VALORISATION ===========================================================
 %Type=1;Illustration(Type,u,s,t)
 %Type=2;Illustration(Type,u,s,t)
 %Type=3;Illustration(Type,u,s,t)
