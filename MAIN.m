@@ -2,13 +2,16 @@
 %% INITIALISATION =========================================================
 clear;close all;clc;
 %% ========================================================================
-Type=0;
+TypeCorde = 0;
+ConditionsLimite = 0;
+Aff = [1,1,1,3];        % Affichage si Aff > 0, si non Aff = 0
+
 % Parametres
-[L,C,H,el,Nw,Aff]=Param(Type);
+[L,C,H,el,Nw,Aff]=Param(TypeCorde,ConditionsLimite);
 % Domaine modal
 [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C);
 % Domaine spatial et temporel
-[s,t]=DomaineSpTp(Per,Lamb,L);
+[s,t]=DomaineSpTp(Per,Lamb,L,TypeCorde);
 % Rq : dans une phase de bebeugage, il faut que [Nt,Ns,Nw] aient des valeurs 
 % raisonnables (<=1000) et si possible distinctes.
 disp(['[Nt,Ns,Nw]=[' num2str([length(t),length(s),Nw]) ']'])
@@ -16,9 +19,9 @@ disp(['[Nt,Ns,Nw]=[' num2str([length(t),length(s),Nw]) ']'])
 %% ========================================================================
 %% ANALYSE MODALE =========================================================
 % Modes propres
-Y=ModePropre(kn,s,Nw,Aff(1));
+[Y,NormY2]=ModePropre(kn,s,Nw,Aff(1),ConditionsLimite);
 % Amplitude modale
-[an,bn]=AmplitudeModale(L,el,kn,wn,n,H,Aff(2));
+[an,bn]=AmplitudeModale(L,el,kn,wn,n,H,NormY2,Aff(2),ConditionsLimite);
 % Fonction en temps
 T=FctTemporelle(Nw,wn,an,bn,t,Aff(3));
 % Deplacement
