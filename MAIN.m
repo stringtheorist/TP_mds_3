@@ -2,30 +2,27 @@
 %% INITIALISATION =========================================================
 clear;close all;clc;
 %% ========================================================================
-% Chargement des parametres
-[L,R,E,ro,Note,H,el,Nw,Aff]=ParamInit;
-% Parametres intermediaires
-[A,C,N0,Def]=ParamInter(R,L,ro,E,Note);
+Type=0;
+% Parametres
+[L,C,H,el,Nw,Aff]=Param(Type);
 % Domaine modal
 [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C);
-% Domaine spatial
-[ds,s,Ns]=DomaineSpatial(Lamb,L);
-% Domaine temporel
-[dt,t,Nt,tmax]=DomaineTemporel(Per,L);
+% Domaine spatial et temporel
+[s,t]=DomaineSpTp(Per,Lamb,L);
 % Rq : dans une phase de bebeugage, il faut que [Nt,Ns,Nw] aient des valeurs 
 % raisonnables (<=1000) et si possible distinctes.
-disp(['[Nt,Ns,Nw]=[' num2str([Nt,Ns,Nw]) ']'])
+disp(['[Nt,Ns,Nw]=[' num2str([length(t),length(s),Nw]) ']'])
 
 %% ========================================================================
 %% ANALYSE MODALE =========================================================
 % Modes propres
-Y=ModePropre(kn,s,Nw,Aff);
+Y=ModePropre(kn,s,Nw,Aff(1));
 % Amplitude modale
-[an,bn]=AmplitudeModale(L,el,kn,wn,n,H,Aff);
+[an,bn]=AmplitudeModale(L,el,kn,wn,n,H,Aff(2));
 % Fonction en temps
-T=FctTemporelle(Nw,wn,an,bn,t,Aff);
+T=FctTemporelle(Nw,wn,an,bn,t,Aff(3));
 % Deplacement
-u=FctDeplacement(H,L,Y,T,s,t);
+u=FctDeplacement(H,L,Y,T,s,t,Aff(4));
 
 %% ========================================================================
 %% VALORISATION ==========================================================

@@ -27,7 +27,7 @@ switch Aff
         ylabel('|an| [m]')
         set(gca,'FontSize',24)
     otherwise 
-        disp('Aff dois etre un valeur positif');
+        disp('Aff dois etre égale 0,1');
 end 
 
 
