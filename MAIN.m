@@ -3,16 +3,19 @@
 clear;close all;clc;
 %% ========================================================================
 TypeCorde = 0;
-ConditionsInitiales = 2 % 1 : corde pincée ; 2 : corde frapée
+ConditionsInitiales = 1; % 0 : corde pincée ; 1 : corde frapée
 ConditionsLimite = 0;
 Aff = [1,1,1,3];        % Affichage si Aff > 0, si non Aff = 0
 
 % Parametres
 [L,C,V,H,el,Nw,Aff]=Param(TypeCorde,ConditionsLimite);
 % Domaine modal
-[n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C);
+[n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C,ConditionsLimite);
 % Domaine spatial et temporel
-[s,t]=DomaineSpTp(Per,Lamb,L,TypeCorde);
+[s,t]=DomaineSpTp(Per,Lamb,L,ConditionsLimite);
+if(ConditionsLimite == 1)
+    [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C,0);
+end
 % Rq : dans une phase de bebeugage, il faut que [Nt,Ns,Nw] aient des valeurs 
 % raisonnables (<=1000) et si possible distinctes.
 disp(['[Nt,Ns,Nw]=[' num2str([length(t),length(s),Nw]) ']'])
@@ -25,7 +28,7 @@ disp(['[Nt,Ns,Nw]=[' num2str([length(t),length(s),Nw]) ']'])
 [an,bn]=AmplitudeModale(L,el,kn,wn,n,H,V,NormY2,Aff(2),...
     ConditionsInitiales,ConditionsLimite);
 % Fonction en temps
-T=FctTemporelle(Nw,wn,an,bn,t,Aff(3));
+T=FctTemporelle(Nw,wn,an,bn,t,Aff(3),ConditionsLimite);
 % Deplacement
 u=FctDeplacement(H,L,Y,T,s,t,Aff(4));
 Film(u,s,L,H,'corde.avi');

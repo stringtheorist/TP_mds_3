@@ -1,8 +1,14 @@
-function T=FctTemporelle(Nw,wn,an,bn,t,Aff)
+function T=FctTemporelle(Nw,wn,an,bn,t,Aff,ConditionsLimite)
 
-for in=1:Nw
-    % T_ij, avec i=>n et j=>t
-    T(in,:)=an(in)*cos(wn(in)*t)+bn(in)*sin(wn(in)*t)/wn(in); 
+switch ConditionsLimite
+    case 0 % Encastrée - Encastrée
+        for in=1:Nw
+        % T_ij, avec i=>n et j=>t
+        T(in,:)=an(in)*cos(wn(in)*t)+bn(in)*sin(wn(in)*t)/wn(in); 
+        end
+    case 1 % Ressort - Ressort
+        %% Fonction en temps
+        T=an.*cos(wn.*t)+bn.*sin(wn.*t)./wn;    % T_ij, avec i=>n et j=>t
 end
 
 switch Aff

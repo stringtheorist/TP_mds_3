@@ -1,6 +1,6 @@
-function [s,t]=DomaineSpTp(Per,Lamb,L,TypeCorde)
+function [s,t]=DomaineSpTp(Per,Lamb,L,ConditionsLimite)
 
-switch TypeCorde
+switch ConditionsLimite
     case 0
         % Domaine spatial
         ds=min(Lamb)/20;% Pas en espace [m]

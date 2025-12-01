@@ -1,15 +1,27 @@
 function [an,bn]=AmplitudeModale(L,el,kn,wn,n,H,V,NormY2,Aff,...
     ConditionsInitiales,ConditionsLimite)
 
+switch ConditionsLimite
+    case 0 % CL : Encastrée - Encastrée
+        switch ConditionsInitiales
+            case 0 % Corde pincée
+                an = 2*H./(n*pi)*L/(L-el).*sin(kn*el)./(kn*el);
+                bn = zeros(size(n));
+        
+            case 1 % Corde frappée
+                an = zeros(size(n));
+                bn = 2*V*H/L*sin(kn*el);
+        end
+    case 1 % Ressort - Ressort
+        switch ConditionsInitiales
+            case 0 % Corde pincée
+                % Pas encore implémenté
+        
+            case 1 % Corde frappée
+                an=zeros(size(n));
+                bn=L*V*(cos(kn.*el)+K/N0*sin(kn.*el)./kn)./normY2;
+        end
 
-% Amplitude modale
-switch ConditionsInitiales
-    case 1 % Corde pincée
-        an = 2*H./(n*pi)*L/(L-el).*sin(kn*el)./(kn*el);
-        bn = zeros(size(n));
-    case 2 % Corde frappée
-        an = zeros(size(n));
-        bn = 2*V*H/L*sin(kn*el);
 end
 
 switch Aff
