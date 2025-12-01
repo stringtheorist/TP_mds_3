@@ -17,5 +17,5 @@ switch Type
         H=L/5;          % Hauteur [m]
         el=L/4;         % poistion [m]
         % Domaine modal
-        Nw=10;        % Nombre maximal de mode considere
+        Nw=50;        % Nombre maximal de mode considere
 end
