@@ -1,6 +1,6 @@
 function Film(u,s,L,H,name)
-figure(6);               
 
+figure(6);               
 
 v = VideoWriter(name);   
 open(v) ;                        

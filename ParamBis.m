@@ -1,6 +1,4 @@
 function [L,C,V,H,el,Nw,k,K,N0,wmax,dw]=ParamBis(TypeCorde,ConditionsLimite)
-
-
 %% INITIALISATION =========================================================
 % Geometrie : section cicrculaire
 L=1;            % Longueur [m]
