@@ -26,4 +26,3 @@ switch Aff
         legend('n=1','n=2','n=3','n=Nw')
         set(gca,'FontSize',24)
 end
-
