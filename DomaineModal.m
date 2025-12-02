@@ -1,4 +1,4 @@
-function [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C,ConditionsLimite)
+function [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C,k,K,N0,ConditionsLimite)
 % Domaine modal    
 n=(1:Nw)';    % Indices modaux
 
@@ -7,8 +7,9 @@ switch ConditionsLimite
         kn=n*pi/L;      % Nombres d'ondes [1/m] : corde fixee aux deux extremites
 
     case 1 % Corde Ressort - Ressort
+        n=(1:10)';
         %% RELATION DE DISPERSION =================================================
-        k=sqrt(ro*A/N0)*w;
+        % k=sqrt(ro*A/N0)*w;
         %-> visualisation de la relation de dispersion
         % PAS IMPLEMENTE
         %% EQUATION TRANSCENDENTALE ===============================================

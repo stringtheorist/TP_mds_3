@@ -1,4 +1,4 @@
-function [s,t]=DomaineSpTp(Per,Lamb,L,ConditionsLimite)
+function [s,t]=DomaineSpTp(Per,Lamb,L,wmax,dw,ConditionsLimite)
 
 switch ConditionsLimite
     case 0

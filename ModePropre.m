@@ -1,4 +1,4 @@
-function [Y,normY2]=ModePropre(kn,s,Nw,Aff,ConditionsLimite)
+function [Y,normY2]=ModePropre(kn,s,Nw,n,K,N0,L,Aff,ConditionsLimite)
 normY2=0;
 switch ConditionsLimite
     case 0
@@ -7,7 +7,7 @@ switch ConditionsLimite
             Y(in,:)=sin(kn(in)*s); 
         end
     case 1
-        for in=1:nmax
+        for in=1:max(n)
              % Y_ij, avec i=>n et j=>s
             Y(in,:)=cos(kn(in).*s)+K/N0*sin(kn(in).*s)./kn(in);    % Y_ij, avec i=>n et j=>s
             % Norme au carré de chaque mode (obtenu via calcul formel) 
