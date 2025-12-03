@@ -14,7 +14,9 @@ switch ConditionsLimite
     case 1 % Ressort - Ressort
         switch ConditionsInitiales
             case 0 % Corde pincée
-                % Pas encore implémenté
+                an = H*V/normY2*(1/el*(cos(kn.*el)./kn.^2+K/N0*sin(kn.*el)./kn.^3-1./kn.^2) ...
+                    + 1/(el-L)*(cos(kn.*L)./kn.^2+K/N0*sin(kn.*L)./kn.^3-cos(kn.*el)./kn.^2-K/N0*sin(kn.*el)./kn.^3));
+                bn = zeros(size(n));
         
             case 1 % Corde frappée
                 an=zeros(size(n));
