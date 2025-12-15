@@ -1,5 +1,5 @@
-function [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C,k,K,N0,ConditionsLimite)
-% Domaine modal    
+function [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C,k,K,N0,Aff,ConditionsLimite)
+% Domaine modal
 n=(1:Nw)';    % Indices modaux
 
 switch ConditionsLimite
@@ -12,10 +12,10 @@ switch ConditionsLimite
         % k=sqrt(ro*A/N0)*w;
         %-> visualisation de la relation de dispersion
         %% PAS IMPLEMENTE car besoin d'appeler w dans la fonction
-	%figure(11);
-	%plot(w,k,'LineWidth',2)
-	%xlabel('w [rad/s]');ylabel('k [1/m]')
-	%set(gca,'FontSize',24)
+        %figure(11);
+        %plot(w,k,'LineWidth',2)
+        %xlabel('w [rad/s]');ylabel('k [1/m]')
+        %set(gca,'FontSize',24)
 
         %% EQUATION TRANSCENDENTALE ===============================================
         Ka=k*L;
@@ -23,10 +23,13 @@ switch ConditionsLimite
         Xi=K*L/N0;
         F=2*Xi*Ka./(Xi^2+Ka.^2).*cos(Ka)+sin(Ka);
         %-> visualisation de la relation de dispersion
-	figure(12);
-	plot(Ka,F,'LineWidth',2)
-	xlabel('Ka [~]');ylabel('F')
-	set(gca,'FontSize',24)
+        if (Aff == 1)
+          figure(12);
+          plot(Ka,F,'LineWidth',2)
+          xlabel('Ka [~]');ylabel('F')
+          set(gca,'FontSize',24)
+          title('Relation de dispersion');
+        end
 %
         %% RECHERCHE DES RACINES DE L'EQUATION TRANSCENDENTALE ====================
         % On cherche d'abord numériquement une bonne approximation de ces racines
@@ -35,30 +38,36 @@ switch ConditionsLimite
         [iKa]=find(abs(diffsignF)==2)+1;
         nmax=length(iKa);
         %-> visualisation de la relation de dispersion
-	figure(13);hold on
-	plot(Ka,F,'LineWidth',2)
-	plot(Ka,signF,'LineWidth',2)
-	plot(Ka(1:Nw-1),diffsignF,'LineWidth',2)
-	plot(Ka(iKa),F(iKa),'o','MarkerSize',8,'LineWidth',2)
-	xlabel('Ka [~]');ylabel('F')
-	set(gca,'FontSize',24)
+        if (Aff == 1)
+          figure(13);hold on
+          plot(Ka,F,'LineWidth',2)
+          plot(Ka,signF,'LineWidth',2)
+          plot(Ka(1:Nw-1),diffsignF,'LineWidth',2)
+          plot(Ka(iKa),F(iKa),'o','MarkerSize',8,'LineWidth',2)
+          xlabel('Ka [~]');ylabel('F')
+          set(gca,'FontSize',24)
+          title('Relation de dispersion');
+        end
 
 
-        % On utilise ensuite un algorithme de cherche de zéros de fonctions.  avec 
-        % Le domaine de recherche est situé dans un voisinage de l'approximation 
-        % trouvée précédement. 
+        % On utilise ensuite un algorithme de cherche de zéros de fonctions.  avec
+        % Le domaine de recherche est situé dans un voisinage de l'approximation
+        % trouvée précédement.
         %-> La fonction quadratique à minimiser
         fctFquad=@(Ka) (2*Xi*Ka./(Xi^2+Ka.^2).*cos(Ka)+sin(Ka)).^2;
         %-> La minimisation
         for n=1:nmax
-            Kan(n)=fminbnd(@(KK) fctFquad(KK),Ka(iKa(n))-2*dKa,Ka(iKa(n))+2*dKa);    
+            Kan(n)=fminbnd(@(KK) fctFquad(KK),Ka(iKa(n))-2*dKa,Ka(iKa(n))+2*dKa);
         end
         %-> visualisation de la relation de dispersion
-	figure(14);hold on
-	plot(Ka,F,'LineWidth',2)
-	plot(Kan,2*Xi*Kan./(Xi^2+Kan.^2).*cos(Kan)+sin(Kan),'o','MarkerSize',8,'LineWidth',2)
-	xlabel('Ka [~]');ylabel('F')
-	set(gca,'FontSize',24)
+        if (Aff == 1)
+          figure(14);hold on
+          plot(Ka,F,'LineWidth',2)
+          plot(Kan,2*Xi*Kan./(Xi^2+Kan.^2).*cos(Kan)+sin(Kan),'o','MarkerSize',8,'LineWidth',2)
+          xlabel('Ka [~]');ylabel('F')
+          set(gca,'FontSize',24)
+          title('Relation de dispersion - Racines');
+        end
 
         kn=Kan'/L;      % Nombres d'ondes [1/m]
 

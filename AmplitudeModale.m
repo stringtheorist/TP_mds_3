@@ -6,7 +6,7 @@ switch ConditionsLimite
             case 0 % Corde pincée
                 an = 2*H./(n*pi)*L/(L-el).*sin(kn*el)./(kn*el);
                 bn = zeros(size(n));
-        
+
             case 1 % Corde frappée
                 an = zeros(size(n));
                 bn = 2*V*H/L*sin(kn*el);
@@ -15,7 +15,7 @@ switch ConditionsLimite
         switch ConditionsInitiales
             case 0 % Corde pincée
                 % Pas encore implémenté
-        
+
             case 1 % Corde frappée
                 an=zeros(size(n));
                 bn=L*V*(cos(kn.*el)+K/N0*sin(kn.*el)./kn)./normY2;
@@ -32,23 +32,14 @@ switch Aff
         xlabel('wn [rad/s]')
         ylabel('|an| [m]')
         set(gca,'FontSize',24)
+        title('Amplitudes an');
         %bn
         figure(2);subplot(1,2,2);
         stem(wn,abs(bn),'LineWidth',2)
         xlabel('wn [rad/s]')
         ylabel('|bn| [m]')
         set(gca,'FontSize',24)
-    otherwise 
+        title('Amplitudes bn');
+    otherwise
         disp('Aff dois etre égale 0,1');
-end 
-
-
-%% Amplitude modale
-%an=zeros(size(n));
-%bn=L*V*(cos(kn.*el)+K/N0*sin(kn.*el)./kn)./normY2;
-%-> visualisation des amplitudes modales an
-%figure(6);
-%stem(Freq,abs(bn),'LineWidth',2)
-%xlabel('fn [Hz]')
-%ylabel('|bn| [m]')
-%set(gca,'FontSize',24)
+end
