@@ -1,5 +1,5 @@
-function T=FctTemporelle(Nw,wn,an,bn,t,Aff,ConditionsLimite)
-
+function T=FctTemporelle(Nw,wn,an,bn,t,Aff)
+global ConditionsLimite
 switch ConditionsLimite
     case 0 % Encastrée - Encastrée
         for in=1:Nw

@@ -1,4 +1,5 @@
-function [s,t]=DomaineSpTp(Per,Lamb,L,wmax,dw,ConditionsLimite)
+function [s,t]=DomaineSpTp(Per,Lamb,L,wmax,dw)
+global ConditionsLimite;
 switch ConditionsLimite
     case 0
         % Domaine spatial

@@ -1,4 +1,5 @@
-function [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C,k,K,N0,Aff,ConditionsLimite)
+function [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C,k,K,N0,Aff)
+global ConditionsLimite;
 % Domaine modal
 n=(1:Nw)';    % Indices modaux
 

@@ -1,5 +1,5 @@
-function [an,bn]=AmplitudeModale(L,el,kn,wn,n,H,V,normY2,K,N0, ...
-    Aff,ConditionsInitiales,ConditionsLimite)
+function [an,bn]=AmplitudeModale(L,el,kn,wn,n,H,V,normY2,K,N0,Aff)
+global ConditionsInitiales ConditionsLimite;
 switch ConditionsLimite
     case 0 % CL : Encastrée - Encastrée
         switch ConditionsInitiales
