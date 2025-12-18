@@ -1,12 +1,32 @@
 function [L,C,V,H,el,Nw,k,K,N0,wmax,dw]=Parametre(TypeCorde)
 global ConditionsLimite;
 %% INITIALISATION =========================================================
+switch TypeCorde
+	case 0
+	% Materiau : acier
+	E=210e9;        % Module de Young [Pa]
+	ro=7800;        % Masse volumique [kg/m^3]
+	case 1
+	% Materiau : fluorocarbone
+	E=5e9;        % Module de Young [Pa]
+	ro=1800;        % Masse volumique [kg/m^3]
+	case 2
+	% Materiau : aluminum
+	E=70e9;        % Module de Young [Pa]
+	ro=2700;        % Masse volumique [kg/m^3]
+	case 3
+	% Materiau : Nylon 
+	E=3e9;        % Module de Young [Pa]
+	ro=1150;        % Masse volumique [kg/m^3]
+	otherwise
+	% Materiau par defaut : acier
+	E=210e9;        % Module de Young [Pa]
+	ro=7800;        % Masse volumique [kg/m^3]
+	
+end
 % Geometrie : section cicrculaire
 L=1;            % Longueur [m]
 R=0.001;        % Rayon [m]
-% Materiau : acier
-E=210e9;        % Module de Young [Pa]
-ro=7800;        % Masse volumique [kg/m^3]
 % Tension : corde accordee sur le la-440
 Note=440;       % Frequence fondamentale [Hz]
 A=pi*R^2;       % Aire [m^2]
@@ -20,6 +40,7 @@ H=L/5;          % Hauteur [m] % Excitation: corde pincee d'une hauteur H en s=el
 
 % Variables initialisés pour raisons techniques
 k=0;K=0;wmax=0;dw=0;
+
 
 switch ConditionsLimite
     case 0
