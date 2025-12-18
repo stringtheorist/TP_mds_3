@@ -5,7 +5,7 @@ clear;close all;clc;
 TypeCorde = 0;
 global ConditionsInitiales ConditionsLimite;
 ConditionsInitiales = 1;  % 0 : corde pincée ; 1 : corde frappée
-ConditionsLimite = 0;     % 0 : corde encastrée-encastrée ; 1 : corde ressort-ressort
+ConditionsLimite = 1;     % 0 : corde encastrée-encastrée ; 1 : corde ressort-ressort
 Aff = [1,1,1,2,1];        % Pour les différents affichages possible, se référer au rapport
 
 if ConditionsInitiales==0 && ConditionsLimite==1
