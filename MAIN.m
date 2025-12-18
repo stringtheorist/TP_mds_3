@@ -14,7 +14,7 @@ if ConditionsInitiales==0 && ConditionsLimite==1
 end
 
 % Parametres
-[L,C,V,H,el,Nw,k,K,N0,wmax,dw]=ParamBis(TypeCorde);
+[L,C,V,H,el,Nw,k,K,N0,wmax,dw]=Parametre(TypeCorde);
 % Domaine modal
 [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C,k,K,N0,Aff(5));
 % Domaine spatial et temporel
