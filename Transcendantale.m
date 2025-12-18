@@ -1,4 +1,4 @@
-function Kan=Transcendentale(Nw,L,k,K,N0,Aff);
+function Kan=Transcendantale(Nw,L,k,K,N0,Aff);
 n=(1:10)';
 %% RELATION DE DISPERSION =================================================
 % k=sqrt(ro*A/N0)*w;

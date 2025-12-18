@@ -1,5 +1,7 @@
 function [L,C,V,H,el,Nw,k,K,N0,wmax,dw]=Parametre(TypeCorde)
+
 global ConditionsLimite;
+
 %% INITIALISATION =========================================================
 switch TypeCorde
 	case 0
@@ -24,6 +26,7 @@ switch TypeCorde
 	ro=7800;        % Masse volumique [kg/m^3]
 	
 end
+
 % Geometrie : section cicrculaire
 L=1;            % Longueur [m]
 R=0.001;        % Rayon [m]
@@ -46,6 +49,7 @@ switch ConditionsLimite
     case 0
         % Domaine modal
         Nw=10;        % Nombre maximal de mode considere
+
     case 1 % Conditions limites : ressorts
 
         % Domaine spectral
@@ -56,5 +60,4 @@ switch ConditionsLimite
         Nw=length(w);   % Nombre de points d'échantillonages en w
         k=sqrt(ro*A/N0)*w; % Relation de dispersion
         K=15.1*pi*N0/L;  % Raideur du ressort appliqué en s=L [N/m]
-
 end
