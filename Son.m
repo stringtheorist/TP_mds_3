@@ -1,17 +1,21 @@
 function Son(u, t)
     dt=t(2)-t(1);
-    fs = 1/dt;
-
+    fs = round(1/dt);
+    
     % sound(u(30,:), fs);
 
     % Normaliser le déplacement dans l'intervalle [-1, 1]
-    sound_data = u(30,:) / max(abs(u(30,:)));  
+    sound_data = u(100,:) / max(abs(u(100,:)));  
+    tab=[];
+    for i=1:500
+        tab=[tab sound_data];
+    end
 
     % Lire le son
-    sound(sound_data, fs);
+    sound(tab, fs);
 
     % Enregistrer dans un fichier
-    audiowrite('sound.wav', sound_data, fs);
-    clear sound_data fs;
+    audiowrite('sound.wav', tab, fs);
+    clear tab fs;
 
 end

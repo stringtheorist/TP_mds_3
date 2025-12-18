@@ -6,7 +6,7 @@ TypeCorde = 0;
 global ConditionsInitiales ConditionsLimite;
 ConditionsInitiales = 1;  % 0 : corde pincée ; 1 : corde frappée
 ConditionsLimite = 0;     % 0 : corde encastrée-encastrée ; 1 : corde ressort-ressort
-Aff = [1,1,1,3,1];        % Pour les différents affichages possible, se référer au rapport
+Aff = [1,1,1,0,1];        % Pour les différents affichages possible, se référer au rapport
 
 if ConditionsInitiales==0 && ConditionsLimite==1
 	disp(["ERREUR : Modèle Corde pincée + ressort-ressort  non implémenté"]);
@@ -21,7 +21,9 @@ end
 [s,t]=DomaineSpTp(Per,Lamb,L,wmax,dw);
 
 if(ConditionsLimite == 1) % FREQUENCE PROPRES ET RE-DIMENSIONNALISATION DES DOMAINES
-    [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C,k,K,N0,0,0);
+    ConditionsLimite=0;
+    [n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C,k,K,N0,0);
+    ConditionsLimite=1;
 end
 
 % Rq : dans une phase de bebeugage, il faut que [Nt,Ns,Nw] aient des valeurs
@@ -41,6 +43,6 @@ u=FctDeplacement(H,L,Y,T,s,t,Aff(4));
 
 %% Bonus
 % Film
-Film(u,s,L,H,'corde.avi');
+Film(u,s,L,H);
 % Son
 Son(u,t);

@@ -1,5 +1,5 @@
-function Film(u,s,L,H,name)
-
+function Film(u,s,L,H)
+name="Corde.mp4";
 figure(6);               
 
 v = VideoWriter(name);   
