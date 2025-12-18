@@ -27,7 +27,7 @@ switch Aff
             hold off
             xlabel('s [m]');ylabel('u(s,t) [m]');
             title('u(s,t) au cours du temps');
-            axis equal;axis([0,L,-H,H])
+            axis equal;axis([0,L,-H-0.2,H+0.2])
             set(gca,'FontSize',24);
             pause(0.1)
         end

@@ -6,7 +6,7 @@ TypeCorde = 0;
 global ConditionsInitiales ConditionsLimite;
 ConditionsInitiales = 1;  % 0 : corde pincée ; 1 : corde frappée
 ConditionsLimite = 0;     % 0 : corde encastrée-encastrée ; 1 : corde ressort-ressort
-Aff = [1,1,1,0,1];        % Pour les différents affichages possible, se référer au rapport
+Aff = [1,1,1,2,1];        % Pour les différents affichages possible, se référer au rapport
 
 if ConditionsInitiales==0 && ConditionsLimite==1
 	disp(["ERREUR : Modèle Corde pincée + ressort-ressort  non implémenté"]);
