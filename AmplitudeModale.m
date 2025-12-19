@@ -14,7 +14,15 @@ switch ConditionsLimite
     case 1 % Ressort - Ressort
         switch ConditionsInitiales
             case 0 % Corde pincée
-                % Pas encore implémenté
+                % Essais des amplitudes mais qui ne font pas ce qu on attendrait d eux
+                % Cas 1
+                % an = H*V*(l/el*(cos(kn*el)./kn.^2 + K/N0*sin(kn*el)./kn.^3 - 1./kn.^2) ...
+                %      1/(el-L)*(cos(kn*L)./kn.^2 + K/N0*sin(kn*L)./kn.^3 - cos(kn*el)./kn.^2 - K/N0*sin(kn*el)./kn.^3));
+                % Cas 2
+                % an = pi/L*V*H./normY2.*((cos(kn*L) + 2*K./(N0*kn).*sin(kn*L) + 1)./((pi/L)^2-kn.^2) ...
+                %      N0/K*(sin(kn*L)./kn - cos(kn*L)./kn.^2 + 1./kn.^2));
+                %
+                % bn =zeros(size(n));
 
             case 1 % Corde frappée
                 an=zeros(size(n));
